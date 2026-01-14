@@ -5,7 +5,6 @@ import hashlib
 import db
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "chave-academica-exemplo"
 
 # =====================================================
 # ASSINATURA DIGITAL (INTEGRIDADE DO RELATÓRIO)
