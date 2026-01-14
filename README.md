@@ -74,4 +74,35 @@ Os relatórios em PDF incluem:
 - Assinatura digital única
 
 ---
+## 🖥️ Interface do Sistema
+
+Figura 1 – Tela principal do sistema de gestão de pagamentos.
+
+![Tela do sistema](https://github.com/user-attachments/assets/008dc983-7046-4457-931f-43b778e6ee38)
+
+## 🖥️ Interface da Aplicação
+
+**Figura 1** – Tela principal da aplicação, apresentando o dashboard de pagamentos, filtros de consulta e funcionalidades de gerenciamento.
+
+![Tela principal da aplicação](https://github.com/user-attachments/assets/b47fb6c5-d565-4973-9333-b5dc9c72e6b3)
+
+---
+
+**Figura 2** – Tela de gerenciamento de pagamentos, permitindo cadastro, edição, exclusão e filtragem por período, método de pagamento e destinatário.
+
+![Gerenciamento de pagamentos](https://github.com/user-attachments/assets/1793a443-6b20-4816-903b-2a0fdd7ddd5b)
+
+---
+
+## 📄 Relatórios Gerados em PDF
+
+**Figura 3** – Primeira página do relatório em PDF gerado automaticamente pelo sistema, contendo identificação do cliente, período de referência e resumo executivo.
+
+![Relatório PDF – Resumo Executivo](https://github.com/user-attachments/assets/7c0c8ac0-0ebf-4600-a546-b7959a66e540)
+
+---
+
+**Figura 4** – Detalhamento dos lançamentos financeiros no relatório em PDF, incluindo valores, juros, métodos de pagamento e assinatura digital para verificação de integridade.
+
+![Relatório PDF – Detalhamento](https://github.com/user-attachments/assets/f1a32c3e-0086-4bba-a80d-16ac6205da4c)
 
