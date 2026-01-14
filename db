@@ -1,0 +1,88 @@
+import sqlite3
+
+DB_PATH = "sistema.db"
+
+# =====================================================
+# CONEXÃO E INICIALIZAÇÃO
+# =====================================================
+
+def get_conn():
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+def init_db():
+    conn = get_conn()
+    cur = conn.cursor()
+
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS clients (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            usuario TEXT UNIQUE NOT NULL,
+            senha TEXT NOT NULL,
+            tipo TEXT NOT NULL
+        )
+    """)
+
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS payments (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            usuario TEXT NOT NULL,
+            metodo TEXT,
+            data TEXT,
+            valor REAL
+        )
+    """)
+
+    conn.commit()
+    conn.close()
+
+# =====================================================
+# CLIENTES
+# =====================================================
+
+def get_client_by_usuario(usuario):
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute(
+        "SELECT * FROM clients WHERE usuario = ?",
+        (usuario,)
+    )
+    row = cur.fetchone()
+    conn.close()
+    return dict(row) if row else None
+
+def add_client(usuario, senha, tipo):
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute(
+        "INSERT INTO clients (usuario, senha, tipo) VALUES (?, ?, ?)",
+        (usuario, senha, tipo)
+    )
+    conn.commit()
+    conn.close()
+
+# =====================================================
+# PAGAMENTOS
+# =====================================================
+
+def add_payment(usuario, metodo, valor, data):
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute(
+        "INSERT INTO payments (usuario, metodo, valor, data) VALUES (?, ?, ?, ?)",
+        (usuario, metodo, valor, data)
+    )
+    conn.commit()
+    conn.close()
+
+def list_payments_by_usuario(usuario):
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute(
+        "SELECT data, metodo, valor FROM payments WHERE usuario = ?",
+        (usuario,)
+    )
+    rows = cur.fetchall()
+    conn.close()
+    return [dict(r) for r in rows]
